@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Referencia Visual · Colores DEVON</title>
+  <title>Referencia Visual · Colores SAO</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -25,7 +25,7 @@
       border-radius: 12px; padding: 20px; text-align: left;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.1);
-      color: #000; /* Texto oscuro para fondos claros */
+      color: #000; 
       position: relative;
     }
 
@@ -34,10 +34,17 @@
       letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;
     }
 
+    /* EL CÓDIGO HEX AHORA ES CLICKEABLE */
     .hex-code {
-      font-size: 0.75rem; background: rgba(0,0,0,0.2);
-      padding: 4px 10px; border-radius: 20px; font-family: monospace;
+      font-size: 0.75rem; background: rgba(0,0,0,0.25); color: #fff;
+      padding: 5px 12px; border-radius: 20px; font-family: monospace;
+      cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
+      user-select: none;
     }
+    .hex-code:hover {
+      background: rgba(0,0,0,0.5); transform: scale(1.05); border-color: rgba(255,255,255,0.3);
+    }
+    .hex-code:active { transform: scale(0.95); }
 
     /* Muestras de acordes y textos dentro de las tarjetas */
     .sample-chord { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; display: block; }
@@ -64,16 +71,19 @@
     .especial-item {
       background: #222; padding: 15px; border-radius: 8px;
       display: flex; flex-direction: column; gap: 10px; justify-content: center;
+      border: 1px solid #333;
     }
     
     .acorde-normal { font-weight: 800; color: #fff; font-size: 1.2rem; }
     .acorde-paso {
       font-weight: 900; color: #0d5c2e; background-color: rgba(13, 92, 46, 0.15);
       padding: 1px 7px; border-radius: 5px; border: 1.5px solid #0d5c2e; font-size: 1.2rem;
+      width: fit-content;
     }
     .nota-sao {
       font-weight: 800; color: #7a4a00; background-color: rgba(212, 175, 55, 0.25);
       padding: 1px 7px; border-radius: 5px; border: 1.5px dashed #b8860b; font-size: 1.1rem;
+      width: fit-content;
     }
     .etiqueta-stop {
       display: inline-block; font-size: 0.75rem; font-weight: 900; text-transform: uppercase;
@@ -81,6 +91,15 @@
       background-color: #8b0000; color: #ffffff; border: 2px solid #ff0000;
       box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); width: fit-content;
     }
+
+    /* AVISO DE COPIADO */
+    #toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #39ff88; color: #000; padding: 10px 20px; border-radius: 30px;
+      font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(57, 255, 136, 0.4);
+      opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 1000;
+    }
+    #toast.show { opacity: 1; }
 
     .footer {
       margin-top: 40px; color: #888; font-size: 0.85rem; text-align: center; padding-bottom: 20px;
@@ -93,49 +112,49 @@
 
   <header>
     <h1>🎨 Color Cheat Sheet</h1>
-    <p class="sub">Referencia visual para guías, grabaciones y ensayos</p>
+    <p class="sub">Referencia visual — Tocá un código HEX para copiarlo</p>
   </header>
 
   <main class="grid">
     
     <!-- INTRO -->
     <div class="card bg-intro">
-      <h2>Intro / Musical <span class="hex-code">#d3d3d3</span></h2>
+      <h2>Intro / Musical <span class="hex-code" onclick="copiarColor('#d3d3d3')">#d3d3d3</span></h2>
       <span class="sample-chord">G  F#  Em  D</span>
       <p class="sample-text">🥁 Batería y sintetizadores. Mantener el groove limpio.</p>
     </div>
 
     <!-- ESTROFA -->
     <div class="card bg-estrofa">
-      <h2>Estrofa / Verso <span class="hex-code">#add8e6</span></h2>
+      <h2>Estrofa / Verso <span class="hex-code" onclick="copiarColor('#add8e6')">#add8e6</span></h2>
       <span class="sample-chord">C  Bm  Am</span>
       <p class="sample-text">Y te besé, te besé, te besé...</p>
     </div>
 
     <!-- PRECORO -->
     <div class="card bg-precoro">
-      <h2>Precoro <span class="hex-code">#b19cd9</span></h2>
+      <h2>Precoro <span class="hex-code" onclick="copiarColor('#b19cd9')">#b19cd9</span></h2>
       <span class="sample-chord">C  Bm  Am  //:2</span>
       <p class="sample-text">Sube la tensión. No acelerar el tempo.</p>
     </div>
 
     <!-- CORO -->
     <div class="card bg-coro">
-      <h2>Coro <span class="hex-code">#ff6b6b</span></h2>
+      <h2>Coro <span class="hex-code" onclick="copiarColor('#ff6b6b')">#ff6b6b</span></h2>
       <span class="sample-chord">C  G  F#  C</span>
       <p class="sample-text">¡A volar! Dinámica al máximo.</p>
     </div>
 
     <!-- PUENTE -->
     <div class="card bg-puente">
-      <h2>Puente / Solo <span class="hex-code">#ffd966</span></h2>
+      <h2>Puente / Solo <span class="hex-code" onclick="copiarColor('#ffd966')">#ffd966</span></h2>
       <span class="sample-chord">Dm  C  Bb</span>
       <p class="sample-text">Dejar respirar. Menos es más.</p>
     </div>
 
     <!-- OUTRO -->
     <div class="card bg-outro">
-      <h2>Outro / Final <span class="hex-code">#f9a8d4</span></h2>
+      <h2>Outro / Final <span class="hex-code" onclick="copiarColor('#f9a8d4')">#f9a8d4</span></h2>
       <span class="sample-chord">E  F#  D#  G#</span>
       <p class="sample-text">Corte seco o fade out. Mantener la energía.</p>
     </div>
@@ -149,22 +168,34 @@
       
       <div class="especial-item">
         <span class="acorde-normal">Acorde Normal</span>
-        <span style="color:#aaa; font-size:0.8rem;">Texto blanco puro. Sin fondo.</span>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="color:#aaa; font-size:0.8rem;">Texto blanco puro.</span>
+          <span class="hex-code" onclick="copiarColor('#ffffff')" style="background:#333;">#ffffff</span>
+        </div>
       </div>
 
       <div class="especial-item">
         <span class="acorde-paso">Acorde de Paso</span>
-        <span style="color:#aaa; font-size:0.8rem;">Verde oscuro con borde. Para notas de paso o acordes menores.</span>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="color:#aaa; font-size:0.8rem;">Texto verde oscuro.</span>
+          <span class="hex-code" onclick="copiarColor('#0d5c2e')" style="background:#333;">#0d5c2e</span>
+        </div>
       </div>
 
       <div class="especial-item">
         <span class="nota-sao">Y T B C ➡️</span>
-        <span style="color:#aaa; font-size:0.8rem;">Nota personal. Borde dorado punteado.</span>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="color:#aaa; font-size:0.8rem;">Nota personal (marrón).</span>
+          <span class="hex-code" onclick="copiarColor('#7a4a00')" style="background:#333;">#7a4a00</span>
+        </div>
       </div>
 
       <div class="especial-item">
         <span class="etiqueta-stop">🚫 STOP</span>
-        <span style="color:#aaa; font-size:0.8rem;">Etiqueta de corte seco. Rojo brillante.</span>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="color:#aaa; font-size:0.8rem;">Rojo de corte seco.</span>
+          <span class="hex-code" onclick="copiarColor('#8b0000')" style="background:#333;">#8b0000</span>
+        </div>
       </div>
 
     </div>
@@ -173,6 +204,21 @@
   <div class="footer">
     <p><strong>SAO - TOTAL FEST</strong></p>
   </div>
+
+  <!-- MENSAJE TOAST -->
+  <div id="toast">✅ ¡Color copiado!</div>
+
+  <script>
+    function copiarColor(hex) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
+      }).catch(err => {
+        alert('No se pudo copiar: ' + err);
+      });
+    }
+  </script>
 
 </body>
 </html>
