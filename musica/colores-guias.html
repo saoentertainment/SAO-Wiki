@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referencia Visual · Colores DEVON</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #0d0d0d; color: #fff; line-height: 1.6; padding: 20px;
+      display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+    }
+    
+    header { text-align: center; margin-bottom: 30px; }
+    h1 { color: #ffe14a; font-size: 1.8rem; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 225, 74, 0.4); margin-bottom: 5px; }
+    p.sub { color: #aaa; font-size: 0.95rem; font-style: italic; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; width: 100%; max-width: 1000px; margin-bottom: 40px;
+    }
+
+    .card {
+      border-radius: 12px; padding: 20px; text-align: left;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #000; /* Texto oscuro para fondos claros */
+      position: relative;
+    }
+
+    .card h2 {
+      font-size: 1.1rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .hex-code {
+      font-size: 0.75rem; background: rgba(0,0,0,0.2);
+      padding: 4px 10px; border-radius: 20px; font-family: monospace;
+    }
+
+    /* Muestras de acordes y textos dentro de las tarjetas */
+    .sample-chord { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; display: block; }
+    .sample-text { font-size: 0.95rem; font-style: italic; color: #333; }
+
+    /* ══════ COLORES DE SECCIONES ══════ */
+    .bg-intro { background-color: #d3d3d3; }
+    .bg-estrofa { background-color: #add8e6; }
+    .bg-precoro { background-color: #b19cd9; }
+    .bg-coro { background-color: #ff6b6b; }
+    .bg-puente { background-color: #ffd966; }
+    .bg-outro { background-color: #f9a8d4; }
+
+    /* ══════ SECCIÓN DE ESTILOS ESPECIALES ══════ */
+    .especiales {
+      width: 100%; max-width: 1000px; background: #1a1a1a;
+      border-radius: 12px; padding: 25px; border: 1px solid #333;
+    }
+    .especiales h2 { color: #ffe14a; font-size: 1.3rem; margin-bottom: 20px; text-align: center; }
+    
+    .especiales-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;
+    }
+    .especial-item {
+      background: #222; padding: 15px; border-radius: 8px;
+      display: flex; flex-direction: column; gap: 10px; justify-content: center;
+    }
+    
+    .acorde-normal { font-weight: 800; color: #fff; font-size: 1.2rem; }
+    .acorde-paso {
+      font-weight: 900; color: #0d5c2e; background-color: rgba(13, 92, 46, 0.15);
+      padding: 1px 7px; border-radius: 5px; border: 1.5px solid #0d5c2e; font-size: 1.2rem;
+    }
+    .nota-sao {
+      font-weight: 800; color: #7a4a00; background-color: rgba(212, 175, 55, 0.25);
+      padding: 1px 7px; border-radius: 5px; border: 1.5px dashed #b8860b; font-size: 1.1rem;
+    }
+    .etiqueta-stop {
+      display: inline-block; font-size: 0.75rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 1.5px; padding: 4px 12px; border-radius: 20px;
+      background-color: #8b0000; color: #ffffff; border: 2px solid #ff0000;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); width: fit-content;
+    }
+
+    .footer {
+      margin-top: 40px; color: #888; font-size: 0.85rem; text-align: center; padding-bottom: 20px;
+    }
+    .footer strong { color: #ffe14a; }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎨 Color Cheat Sheet</h1>
+    <p class="sub">Referencia visual para guías, grabaciones y ensayos</p>
+  </header>
+
+  <main class="grid">
+    
+    <!-- INTRO -->
+    <div class="card bg-intro">
+      <h2>Intro / Musical <span class="hex-code">#d3d3d3</span></h2>
+      <span class="sample-chord">G  F#  Em  D</span>
+      <p class="sample-text">🥁 Batería y sintetizadores. Mantener el groove limpio.</p>
+    </div>
+
+    <!-- ESTROFA -->
+    <div class="card bg-estrofa">
+      <h2>Estrofa / Verso <span class="hex-code">#add8e6</span></h2>
+      <span class="sample-chord">C  Bm  Am</span>
+      <p class="sample-text">Y te besé, te besé, te besé...</p>
+    </div>
+
+    <!-- PRECORO -->
+    <div class="card bg-precoro">
+      <h2>Precoro <span class="hex-code">#b19cd9</span></h2>
+      <span class="sample-chord">C  Bm  Am  //:2</span>
+      <p class="sample-text">Sube la tensión. No acelerar el tempo.</p>
+    </div>
+
+    <!-- CORO -->
+    <div class="card bg-coro">
+      <h2>Coro <span class="hex-code">#ff6b6b</span></h2>
+      <span class="sample-chord">C  G  F#  C</span>
+      <p class="sample-text">¡A volar! Dinámica al máximo.</p>
+    </div>
+
+    <!-- PUENTE -->
+    <div class="card bg-puente">
+      <h2>Puente / Solo <span class="hex-code">#ffd966</span></h2>
+      <span class="sample-chord">Dm  C  Bb</span>
+      <p class="sample-text">Dejar respirar. Menos es más.</p>
+    </div>
+
+    <!-- OUTRO -->
+    <div class="card bg-outro">
+      <h2>Outro / Final <span class="hex-code">#f9a8d4</span></h2>
+      <span class="sample-chord">E  F#  D#  G#</span>
+      <p class="sample-text">Corte seco o fade out. Mantener la energía.</p>
+    </div>
+
+  </main>
+
+  <!-- ESTILOS ESPECIALES -->
+  <section class="especiales">
+    <h2>✨ Estilos Especiales</h2>
+    <div class="especiales-grid">
+      
+      <div class="especial-item">
+        <span class="acorde-normal">Acorde Normal</span>
+        <span style="color:#aaa; font-size:0.8rem;">Texto blanco puro. Sin fondo.</span>
+      </div>
+
+      <div class="especial-item">
+        <span class="acorde-paso">Acorde de Paso</span>
+        <span style="color:#aaa; font-size:0.8rem;">Verde oscuro con borde. Para notas de paso o acordes menores.</span>
+      </div>
+
+      <div class="especial-item">
+        <span class="nota-sao">Y T B C ➡️</span>
+        <span style="color:#aaa; font-size:0.8rem;">Nota personal. Borde dorado punteado.</span>
+      </div>
+
+      <div class="especial-item">
+        <span class="etiqueta-stop">🚫 STOP</span>
+        <span style="color:#aaa; font-size:0.8rem;">Etiqueta de corte seco. Rojo brillante.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    <p><strong>SAO - TOTAL FEST</strong></p>
+  </div>
+
+</body>
+</html>
