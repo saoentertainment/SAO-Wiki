@@ -34,19 +34,16 @@
       letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;
     }
 
-    /* EL CÓDIGO HEX AHORA ES CLICKEABLE */
+    /* CÓDIGO HEX CLICKEABLE */
     .hex-code {
       font-size: 0.75rem; background: rgba(0,0,0,0.25); color: #fff;
       padding: 5px 12px; border-radius: 20px; font-family: monospace;
       cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
       user-select: none;
     }
-    .hex-code:hover {
-      background: rgba(0,0,0,0.5); transform: scale(1.05); border-color: rgba(255,255,255,0.3);
-    }
+    .hex-code:hover { background: rgba(0,0,0,0.5); transform: scale(1.05); border-color: rgba(255,255,255,0.3); }
     .hex-code:active { transform: scale(0.95); }
 
-    /* Muestras de acordes y textos dentro de las tarjetas */
     .sample-chord { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; display: block; }
     .sample-text { font-size: 0.95rem; font-style: italic; color: #333; }
 
@@ -61,7 +58,7 @@
     /* ══════ SECCIÓN DE ESTILOS ESPECIALES ══════ */
     .especiales {
       width: 100%; max-width: 1000px; background: #1a1a1a;
-      border-radius: 12px; padding: 25px; border: 1px solid #333;
+      border-radius: 12px; padding: 25px; border: 1px solid #333; margin-bottom: 30px;
     }
     .especiales h2 { color: #ffe14a; font-size: 1.3rem; margin-bottom: 20px; text-align: center; }
     
@@ -92,6 +89,22 @@
       box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); width: fit-content;
     }
 
+    /* ══════ SECCIÓN DE EMOJIS ══════ */
+    .emojis-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px;
+    }
+    
+    .emoji-btn {
+      background: #222; border: 1px solid #444; border-radius: 10px;
+      padding: 12px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .emoji-btn:hover { background: #333; border-color: #ffe14a; transform: translateY(-2px); }
+    .emoji-btn:active { transform: scale(0.9); }
+    
+    .emoji-btn .icon { font-size: 1.8rem; line-height: 1; margin-bottom: 6px; }
+    .emoji-btn .label { font-size: 0.6rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; font-weight: bold; }
+
     /* AVISO DE COPIADO */
     #toast {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -101,103 +114,127 @@
     }
     #toast.show { opacity: 1; }
 
-    .footer {
-      margin-top: 40px; color: #888; font-size: 0.85rem; text-align: center; padding-bottom: 20px;
-    }
+    .footer { margin-top: 10px; color: #888; font-size: 0.85rem; text-align: center; padding-bottom: 20px; }
     .footer strong { color: #ffe14a; }
-
   </style>
 </head>
 <body>
 
   <header>
     <h1>🎨 Color Cheat Sheet</h1>
-    <p class="sub">Referencia visual — Tocá un código HEX para copiarlo</p>
+    <p class="sub">Referencia visual — Tocá cualquier color o emoji para copiarlo</p>
   </header>
 
   <main class="grid">
-    
     <!-- INTRO -->
     <div class="card bg-intro">
-      <h2>Intro / Musical <span class="hex-code" onclick="copiarColor('#d3d3d3')">#d3d3d3</span></h2>
+      <h2>Intro / Musical <span class="hex-code" onclick="copiar('#d3d3d3')">#d3d3d3</span></h2>
       <span class="sample-chord">G  F#  Em  D</span>
       <p class="sample-text">🥁 Batería y sintetizadores. Mantener el groove limpio.</p>
     </div>
-
     <!-- ESTROFA -->
     <div class="card bg-estrofa">
-      <h2>Estrofa / Verso <span class="hex-code" onclick="copiarColor('#add8e6')">#add8e6</span></h2>
+      <h2>Estrofa / Verso <span class="hex-code" onclick="copiar('#add8e6')">#add8e6</span></h2>
       <span class="sample-chord">C  Bm  Am</span>
       <p class="sample-text">Y te besé, te besé, te besé...</p>
     </div>
-
     <!-- PRECORO -->
     <div class="card bg-precoro">
-      <h2>Precoro <span class="hex-code" onclick="copiarColor('#b19cd9')">#b19cd9</span></h2>
+      <h2>Precoro <span class="hex-code" onclick="copiar('#b19cd9')">#b19cd9</span></h2>
       <span class="sample-chord">C  Bm  Am  //:2</span>
       <p class="sample-text">Sube la tensión. No acelerar el tempo.</p>
     </div>
-
     <!-- CORO -->
     <div class="card bg-coro">
-      <h2>Coro <span class="hex-code" onclick="copiarColor('#ff6b6b')">#ff6b6b</span></h2>
+      <h2>Coro <span class="hex-code" onclick="copiar('#ff6b6b')">#ff6b6b</span></h2>
       <span class="sample-chord">C  G  F#  C</span>
       <p class="sample-text">¡A volar! Dinámica al máximo.</p>
     </div>
-
     <!-- PUENTE -->
     <div class="card bg-puente">
-      <h2>Puente / Solo <span class="hex-code" onclick="copiarColor('#ffd966')">#ffd966</span></h2>
+      <h2>Puente / Solo <span class="hex-code" onclick="copiar('#ffd966')">#ffd966</span></h2>
       <span class="sample-chord">Dm  C  Bb</span>
       <p class="sample-text">Dejar respirar. Menos es más.</p>
     </div>
-
     <!-- OUTRO -->
     <div class="card bg-outro">
-      <h2>Outro / Final <span class="hex-code" onclick="copiarColor('#f9a8d4')">#f9a8d4</span></h2>
+      <h2>Outro / Final <span class="hex-code" onclick="copiar('#f9a8d4')">#f9a8d4</span></h2>
       <span class="sample-chord">E  F#  D#  G#</span>
       <p class="sample-text">Corte seco o fade out. Mantener la energía.</p>
     </div>
-
   </main>
 
   <!-- ESTILOS ESPECIALES -->
   <section class="especiales">
     <h2>✨ Estilos Especiales</h2>
     <div class="especiales-grid">
-      
       <div class="especial-item">
         <span class="acorde-normal">Acorde Normal</span>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span style="color:#aaa; font-size:0.8rem;">Texto blanco puro.</span>
-          <span class="hex-code" onclick="copiarColor('#ffffff')" style="background:#333;">#ffffff</span>
+          <span class="hex-code" onclick="copiar('#ffffff')" style="background:#333;">#ffffff</span>
         </div>
       </div>
-
       <div class="especial-item">
         <span class="acorde-paso">Acorde de Paso</span>
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="color:#aaa; font-size:0.8rem;">Texto verde oscuro.</span>
-          <span class="hex-code" onclick="copiarColor('#0d5c2e')" style="background:#333;">#0d5c2e</span>
+          <span style="color:#aaa; font-size:0.8rem;">Verde oscuro.</span>
+          <span class="hex-code" onclick="copiar('#0d5c2e')" style="background:#333;">#0d5c2e</span>
         </div>
       </div>
-
       <div class="especial-item">
         <span class="nota-sao">Y T B C ➡️</span>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span style="color:#aaa; font-size:0.8rem;">Nota personal (marrón).</span>
-          <span class="hex-code" onclick="copiarColor('#7a4a00')" style="background:#333;">#7a4a00</span>
+          <span class="hex-code" onclick="copiar('#7a4a00')" style="background:#333;">#7a4a00</span>
         </div>
       </div>
-
       <div class="especial-item">
         <span class="etiqueta-stop">🚫 STOP</span>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span style="color:#aaa; font-size:0.8rem;">Rojo de corte seco.</span>
-          <span class="hex-code" onclick="copiarColor('#8b0000')" style="background:#333;">#8b0000</span>
+          <span class="hex-code" onclick="copiar('#8b0000')" style="background:#333;">#8b0000</span>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- NUEVA SECCIÓN DE EMOJIS -->
+  <section class="especiales">
+    <h2>🔣 Emojis Frecuentes</h2>
+    <div class="emojis-grid">
+      
+      <!-- Números y Secuencia -->
+      <div class="emoji-btn" onclick="copiar('1️⃣')"><span class="icon">1️⃣</span><span class="label">Uno</span></div>
+      <div class="emoji-btn" onclick="copiar('2️⃣')"><span class="icon">2️⃣</span><span class="label">Dos</span></div>
+      <div class="emoji-btn" onclick="copiar('3️⃣')"><span class="icon">3️⃣</span><span class="label">Tres</span></div>
+      <div class="emoji-btn" onclick="copiar('4️⃣')"><span class="icon">4️⃣</span><span class="label">Cuatro</span></div>
+      <div class="emoji-btn" onclick="copiar('5️⃣')"><span class="icon">5️⃣</span><span class="label">Cinco</span></div>
+      <div class="emoji-btn" onclick="copiar('6️⃣')"><span class="icon">6️⃣</span><span class="label">Seis</span></div>
+
+      <!-- Estructura y Señales -->
+      <div class="emoji-btn" onclick="copiar('🌉')"><span class="icon">🌉</span><span class="label">Puente</span></div>
+      <div class="emoji-btn" onclick="copiar('🚧')"><span class="icon">🚧</span><span class="label">Precoro</span></div>
+      <div class="emoji-btn" onclick="copiar('🔄')"><span class="icon">🔄</span><span class="label">Loop</span></div>
+      <div class="emoji-btn" onclick="copiar('♾️')"><span class="icon">♾️</span><span class="label">Infinito</span></div>
+      <div class="emoji-btn" onclick="copiar('⤴️')"><span class="icon">⤴️</span><span class="label">Subida</span></div>
+      <div class="emoji-btn" onclick="copiar('🚫')"><span class="icon">🚫</span><span class="label">Stop</span></div>
+
+      <!-- Instrumentos y Roles -->
+      <div class="emoji-btn" onclick="copiar('🎹')"><span class="icon">🎹</span><span class="label">Teclados</span></div>
+      <div class="emoji-btn" onclick="copiar('🎸')"><span class="icon">🎸</span><span class="label">Guitarra</span></div>
+      <div class="emoji-btn" onclick="copiar('🥁')"><span class="icon">🥁</span><span class="label">Batería</span></div>
+      <div class="emoji-btn" onclick="copiar('🎙️')"><span class="icon">🎙️</span><span class="label">Voz</span></div>
+      <div class="emoji-btn" onclick="copiar('🎵')"><span class="icon">🎵</span><span class="label">Melodía</span></div>
+      <div class="emoji-btn" onclick="copiar('📋')"><span class="icon">📋</span><span class="label">Setlist</span></div>
+
+      <!-- Extras Útiles -->
+      <div class="emoji-btn" onclick="copiar('🎧')"><span class="icon">🎧</span><span class="label">Video/Ref</span></div>
+      <div class="emoji-btn" onclick="copiar('🎛️')"><span class="icon">🎛️</span><span class="label">Ableton</span></div>
+      <div class="emoji-btn" onclick="copiar('🎚️')"><span class="icon">🎚️</span><span class="label">Faders</span></div>
+      <div class="emoji-btn" onclick="copiar('⚠️')"><span class="icon">⚠️</span><span class="label">Ojo/Trampa</span></div>
+      <div class="emoji-btn" onclick="copiar('💡')"><span class="icon">💡</span><span class="label">Idea</span></div>
+      <div class="emoji-btn" onclick="copiar('🔥')"><span class="icon">🔥</span><span class="label">Hype</span></div>
     </div>
   </section>
 
@@ -206,11 +243,11 @@
   </div>
 
   <!-- MENSAJE TOAST -->
-  <div id="toast">✅ ¡Color copiado!</div>
+  <div id="toast">✅ ¡Copiado!</div>
 
   <script>
-    function copiarColor(hex) {
-      navigator.clipboard.writeText(hex).then(() => {
+    function copiar(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
         const toast = document.getElementById('toast');
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2000);
