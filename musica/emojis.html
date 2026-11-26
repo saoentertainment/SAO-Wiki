@@ -32,6 +32,7 @@
     .categoria:nth-child(5) { border-left-color: #ff8a3d; }
     .categoria:nth-child(6) { border-left-color: #eab308; }
     .categoria:nth-child(7) { border-left-color: #f43f5e; }
+    .categoria:nth-child(8) { border-left-color: #06b6d4; }
 
     .categoria h2 {
       font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase;
@@ -69,6 +70,13 @@
       font-weight: bold; transition: all 0.2s; display: inline-block;
     }
     .btn-volver:hover { background: #ff2d95; border-color: #ff2d95; transform: translateY(-2px); }
+
+    /* ENLACE EXTERNO */
+    .link-externo {
+      display: inline-block; margin-top: 15px; color: #00d9ff; text-decoration: none;
+      font-weight: bold; border-bottom: 1px dashed #00d9ff; transition: all 0.2s;
+    }
+    .link-externo:hover { color: #ffe14a; border-bottom-color: #ffe14a; }
 
   </style>
 </head>
@@ -183,7 +191,7 @@
       </div>
     </div>
 
-    <!-- 7. NOTACIÓN MUSICAL Y PARTITURA -->
+    <!-- 7. NOTACIÓN MUSICAL Y PARTITURA (ACTUALIZADO) -->
     <div class="categoria">
       <h2>🎼 Notación Musical y Partitura</h2>
       <div class="emojis-grid">
@@ -199,7 +207,25 @@
         <div class="emoji-btn" onclick="copiar('♫')"><span class="icon" style="font-family:serif;">♫</span><span class="label">Corcheas</span></div>
         <div class="emoji-btn" onclick="copiar('♬')"><span class="icon" style="font-family:serif;">♬</span><span class="label">Semicorchea</span></div>
         <div class="emoji-btn" onclick="copiar('𝄐')"><span class="icon" style="font-family:serif;">𝄐</span><span class="label">Calderón</span></div>
+        
+        <!-- SÍMBOLOS DE REPETICIÓN -->
+        <div class="emoji-btn" onclick="copiar('𝄆')"><span class="icon" style="font-family:serif;">𝄆</span><span class="label">Repetir Izq</span></div>
+        <div class="emoji-btn" onclick="copiar('𝄇')"><span class="icon" style="font-family:serif;">𝄇</span><span class="label">Repetir Der</span></div>
+        <div class="emoji-btn" onclick="copiar('𝄈')"><span class="icon" style="font-family:serif;">𝄈</span><span class="label">Puntos Rep</span></div>
+        <div class="emoji-btn" onclick="copiar('𝄎')"><span class="icon" style="font-family:serif;">𝄎</span><span class="label">Rep. Compás</span></div>
       </div>
+    </div>
+
+    <!-- 8. SÍMBOLOS Y ENLACES (NUEVO) -->
+    <div class="categoria">
+      <h2>🔣 Símbolos y Enlaces</h2>
+      <div class="emojis-grid">
+        <div class="emoji-btn" onclick="copiar('⌣')"><span class="icon" style="font-family:serif;">⌣</span><span class="label">Sonrisa</span></div>
+        <div class="emoji-btn" onclick="copiar('ツ')"><span class="icon" style="font-family:serif;">ツ</span><span class="label">Cara</span></div>
+        <div class="emoji-btn" onclick="copiar('¯\\_(ツ)_/¯')"><span class="icon" style="font-family:serif; font-size:1rem;">¯\\_(ツ)_/¯</span><span class="label">Shrug</span></div>
+        <div class="emoji-btn" onclick="copiar('<3')"><span class="icon" style="font-family:serif;">&lt;3</span><span class="label">Corazón</span></div>
+      </div>
+      <a href="https://fsymbols.com/emoji/smile/?lang=es" target="_blank" class="link-externo">🔗 Más emojis y símbolos en FSymbols</a>
     </div>
 
   </div>
