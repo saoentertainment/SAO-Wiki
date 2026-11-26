@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablero de Emojis · SAO-Wiki</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎛️</text></svg>">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #0d0d0d; color: #fff; line-height: 1.6; padding: 20px;
+      display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+    }
+    
+    header { text-align: center; margin-bottom: 30px; }
+    h1 { color: #ffe14a; font-size: 1.8rem; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 225, 74, 0.4); margin-bottom: 5px; }
+    p.sub { color: #aaa; font-size: 0.95rem; font-style: italic; }
+
+    .grid-container {
+      width: 100%; max-width: 1000px; display: flex; flex-direction: column; gap: 20px;
+    }
+
+    .categoria {
+      background: #1a1a1a; border-radius: 12px; padding: 20px;
+      border-left: 4px solid #ff2d95; box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+    .categoria:nth-child(2) { border-left-color: #00d9ff; }
+    .categoria:nth-child(3) { border-left-color: #39ff88; }
+    .categoria:nth-child(4) { border-left-color: #a855f7; }
+    .categoria:nth-child(5) { border-left-color: #ff8a3d; }
+
+    .categoria h2 {
+      font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase;
+      letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
+    }
+
+    .emojis-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px;
+    }
+    
+    .emoji-btn {
+      background: #222; border: 1px solid #444; border-radius: 10px;
+      padding: 12px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .emoji-btn:hover { background: #333; border-color: #ffe14a; transform: translateY(-2px); }
+    .emoji-btn:active { transform: scale(0.9); }
+    
+    .emoji-btn .icon { font-size: 1.8rem; line-height: 1; margin-bottom: 6px; }
+    .emoji-btn .label { font-size: 0.6rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; font-weight: bold; }
+
+    /* AVISO DE COPIADO */
+    #toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #39ff88; color: #000; padding: 10px 20px; border-radius: 30px;
+      font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(57, 255, 136, 0.4);
+      opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 1000;
+    }
+    #toast.show { opacity: 1; }
+
+    /* BOTÓN VOLVER */
+    .btn-volver {
+      margin-top: 40px; padding: 12px 25px; border-radius: 30px; text-decoration: none;
+      background: rgba(255,255,255,.08); color: #fff; border: 2px solid rgba(255,255,255,.15);
+      font-weight: bold; transition: all 0.2s; display: inline-block;
+    }
+    .btn-volver:hover { background: #ff2d95; border-color: #ff2d95; transform: translateY(-2px); }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎛️ Tablero de Emojis</h1>
+    <p class="sub">Toca cualquier emoji para copiarlo al instante</p>
+  </header>
+
+  <div class="grid-container">
+    
+    <!-- 1. INSTRUMENTOS Y MÚSICA -->
+    <div class="categoria">
+      <h2>🎸 Instrumentos y Músicos</h2>
+      <div class="emojis-grid">
+        <div class="emoji-btn" onclick="copiar('🎸')"><span class="icon">🎸</span><span class="label">Guitarra</span></div>
+        <div class="emoji-btn" onclick="copiar('🎹')"><span class="icon">🎹</span><span class="label">Teclado</span></div>
+        <div class="emoji-btn" onclick="copiar('🥁')"><span class="icon">🥁</span><span class="label">Batería</span></div>
+        <div class="emoji-btn" onclick="copiar('🎤')"><span class="icon">🎤</span><span class="label">Voz</span></div>
+        <div class="emoji-btn" onclick="copiar('🎙️')"><span class="icon">🎙️</span><span class="label">Micrófono</span></div>
+        <div class="emoji-btn" onclick="copiar('🎧')"><span class="icon">🎧</span><span class="label">Monitoreo</span></div>
+        <div class="emoji-btn" onclick="copiar('🎼')"><span class="icon">🎼</span><span class="label">Partitura</span></div>
+        <div class="emoji-btn" onclick="copiar('🎵')"><span class="icon">🎵</span><span class="label">Nota</span></div>
+        <div class="emoji-btn" onclick="copiar('🎶')"><span class="icon">🎶</span><span class="label">Melodía</span></div>
+      </div>
+    </div>
+
+    <!-- 2. ESTRUCTURA DE CANCIONES -->
+    <div class="categoria">
+      <h2>🏗️ Estructura y Secciones</h2>
+      <div class="emojis-grid">
+        <div class="emoji-btn" onclick="copiar('1️⃣')"><span class="icon">1️⃣</span><span class="label">V1</span></div>
+        <div class="emoji-btn" onclick="copiar('2️⃣')"><span class="icon">2️⃣</span><span class="label">V2</span></div>
+        <div class="emoji-btn" onclick="copiar('3️⃣')"><span class="icon">3️⃣</span><span class="label">V3</span></div>
+        <div class="emoji-btn" onclick="copiar('4️⃣')"><span class="icon">4️⃣</span><span class="label">V4</span></div>
+        <div class="emoji-btn" onclick="copiar('5️⃣')"><span class="icon">5️⃣</span><span class="label">V5</span></div>
+        <div class="emoji-btn" onclick="copiar('6️⃣')"><span class="icon">6️⃣</span><span class="label">V6</span></div>
+        
+        <div class="emoji-btn" onclick="copiar('🌉')"><span class="icon">🌉</span><span class="label">Puente</span></div>
+        <div class="emoji-btn" onclick="copiar('🚧')"><span class="icon">🚧</span><span class="label">Precoro</span></div>
+        <div class="emoji-btn" onclick="copiar('🔄')"><span class="icon">🔄</span><span class="label">Loop</span></div>
+        <div class="emoji-btn" onclick="copiar('♾️')"><span class="icon">♾️</span><span class="label">Bucle</span></div>
+        <div class="emoji-btn" onclick="copiar('⤴️')"><span class="icon">⤴️</span><span class="label">Subida</span></div>
+        <div class="emoji-btn" onclick="copiar('🚫')"><span class="icon">🚫</span><span class="label">Corte/Stop</span></div>
+        <div class="emoji-btn" onclick="copiar('🏁')"><span class="icon">🏁</span><span class="label">Final</span></div>
+      </div>
+    </div>
+
+    <!-- 3. PRODUCCIÓN Y ABLETON -->
+    <div class="categoria">
+      <h2>🎛️ Producción y Ableton</h2>
+      <div class="emojis-grid">
+        <div class="emoji-btn" onclick="copiar('🎛️')"><span class="icon">🎛️</span><span class="label">Perillas/FX</span></div>
+        <div class="emoji-btn" onclick="copiar('🎚️')"><span class="icon">🎚️</span><span class="label">Faders</span></div>
+        <div class="emoji-btn" onclick="copiar('💻')"><span class="icon">💻</span><span class="label">DAW/PC</span></div>
+        <div class="emoji-btn" onclick="copiar('🖥️')"><span class="icon">🖥️</span><span class="label">Monitor</span></div>
+        <div class="emoji-btn" onclick="copiar('🔊')"><span class="icon">🔊</span><span class="label">Volumen</span></div>
+        <div class="emoji-btn" onclick="copiar('🔉')"><span class="icon">🔉</span><span class="label">Bajar Vol</span></div>
+        <div class="emoji-btn" onclick="copiar('📈')"><span class="icon">📈</span><span class="label">Compresión</span></div>
+        <div class="emoji-btn" onclick="copiar('📉')"><span class="icon">📉</span><span class="label">EQ/Reducir</span></div>
+        <div class="emoji-btn" onclick="copiar('💾')"><span class="icon">💾</span><span class="label">Guardar</span></div>
+      </div>
+    </div>
+
+    <!-- 4. LOGÍSTICA Y SETLISTS -->
+    <div class="categoria">
+      <h2>📋 Logística y Setlists</h2>
+      <div class="emojis-grid">
+        <div class="emoji-btn" onclick="copiar('📋')"><span class="icon">📋</span><span class="label">Setlist</span></div>
+        <div class="emoji-btn" onclick="copiar('🎯')"><span class="icon">🎯</span><span class="label">Objetivo</span></div>
+        <div class="emoji-btn" onclick="copiar('🎉')"><span class="icon">🎉</span><span class="label">Show</span></div>
+        <div class="emoji-btn" onclick="copiar('📅')"><span class="icon">📅</span><span class="label">Fecha</span></div>
+        <div class="emoji-btn" onclick="copiar('⏱️')"><span class="icon">⏱️</span><span class="label">Tiempo</span></div>
+        <div class="emoji-btn" onclick="copiar('✅')"><span class="icon">✅</span><span class="label">Listo</span></div>
+        <div class="emoji-btn" onclick="copiar('⬜')"><span class="icon">⬜</span><span class="label">Pendiente</span></div>
+        <div class="emoji-btn" onclick="copiar('❌')"><span class="icon">❌</span><span class="label">Cancelado</span></div>
+        <div class="emoji-btn" onclick="copiar('🚐')"><span class="icon">🚐</span><span class="label">Transporte</span></div>
+        <div class="emoji-btn" onclick="copiar('🔌')"><span class="icon">🔌</span><span class="label">Cables</span></div>
+      </div>
+    </div>
+
+    <!-- 5. ALERTAS Y NOTAS -->
+    <div class="categoria">
+      <h2>⚠️ Alertas y Notas</h2>
+      <div class="emojis-grid">
+        <div class="emoji-btn" onclick="copiar('⚠️')"><span class="icon">⚠️</span><span class="label">Ojo/Trampa</span></div>
+        <div class="emoji-btn" onclick="copiar('💡')"><span class="icon">💡</span><span class="label">Idea/Tip</span></div>
+        <div class="emoji-btn" onclick="copiar('🔥')"><span class="icon">🔥</span><span class="label">Hype</span></div>
+        <div class="emoji-btn" onclick="copiar('❗')"><span class="icon">❗</span><span class="label">Importante</span></div>
+        <div class="emoji-btn" onclick="copiar('👀')"><span class="icon">👀</span><span class="label">Atención</span></div>
+        <div class="emoji-btn" onclick="copiar('🧠')"><span class="icon">🧠</span><span class="label">Recordar</span></div>
+        <div class="emoji-btn" onclick="copiar('🛠️')"><span class="icon">🛠️</span><span class="label">Arreglar</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="../index.html" class="btn-volver">🏠 Volver al menú principal</a>
+
+  <!-- MENSAJE TOAST -->
+  <div id="toast">✅ ¡Copiado!</div>
+
+  <script>
+    function copiar(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      }).catch(err => {
+        alert('No se pudo copiar: ' + err);
+      });
+    }
+  </script>
+
+</body>
+</html>
